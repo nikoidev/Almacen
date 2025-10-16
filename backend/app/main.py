@@ -5,7 +5,7 @@ from pathlib import Path
 from .core.database import engine, Base
 from .api.routes import (
     auth, users, roles, permissions, audit_logs, profile,
-    products, suppliers, locations, inventory, shipments, orders
+    products, suppliers, locations, inventory, shipments, orders, dashboard
 )
 
 # Create database tables
@@ -48,6 +48,7 @@ app.include_router(locations.router, prefix="/api/locations", tags=["Locations"]
 app.include_router(inventory.router, prefix="/api/inventory", tags=["Inventory"])
 app.include_router(shipments.router, prefix="/api/shipments", tags=["Inbound Shipments"])
 app.include_router(orders.router, prefix="/api/orders", tags=["Outbound Orders"])
+app.include_router(dashboard.router, prefix="/api/dashboard", tags=["Dashboard"])
 
 
 @app.get("/")
@@ -61,6 +62,7 @@ def root():
             "Product Catalog",
             "Inbound Shipments",
             "Outbound Orders",
+            "Dashboard & Analytics",
             "RBAC & Audit Log"
         ]
     }

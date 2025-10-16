@@ -31,6 +31,10 @@ from .order import (
     OutboundOrderListResponse, OutboundOrderPick,
     OutboundOrderItemResponse
 )
+from .dashboard import (
+    DashboardSummary, StockByCategory, TopProduct,
+    LowStockAlert, MovementData, WarehouseUtilization
+)
 
 __all__ = [
     # Auth & Users
@@ -58,5 +62,8 @@ __all__ = [
     # Orders
     "OutboundOrderCreate", "OutboundOrderUpdate", "OutboundOrderResponse",
     "OutboundOrderListResponse", "OutboundOrderPick",
-    "OutboundOrderItemResponse"
+    "OutboundOrderItemResponse",
+    # Dashboard
+    "DashboardSummary", "StockByCategory", "TopProduct",
+    "LowStockAlert", "MovementData", "WarehouseUtilization"
 ]
