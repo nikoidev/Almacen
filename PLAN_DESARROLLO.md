@@ -343,24 +343,25 @@ Permisos asignados:
 
 ---
 
-### **FASE 7: Frontend - Types y API Services** (Día 10)
+### ✅ **FASE 7: Frontend - Types y API Services** (COMPLETADA)
 
-- [ ] Actualizar `frontend/types/index.ts` con nuevos tipos:
-  - `Product`
-  - `Supplier`
-  - `Location`
-  - `Inventory`
-  - `InboundShipment`
-  - `OutboundOrder`
-  - `DashboardSummary`
+- [x] Actualizar `frontend/types/index.ts` con nuevos tipos:
+  - `Product`, `ProductCreate`, `ProductUpdate`
+  - `Supplier`, `SupplierCreate`, `SupplierUpdate`
+  - `Location`, `LocationCreate`, `LocationUpdate`
+  - `Inventory`, `InventoryAdjust`, `InventoryMove`, `InventoryByProduct`
+  - `InboundShipment`, `InboundShipmentCreate`, `InboundShipmentReceive`
+  - `OutboundOrder`, `OutboundOrderCreate`, `OutboundOrderPick`
+  - `DashboardSummary` con todos sus sub-tipos
+  - Enums: `ShipmentStatus`, `OrderStatus`
 
-- [ ] Crear `frontend/lib/api/products.ts`
-- [ ] Crear `frontend/lib/api/suppliers.ts`
-- [ ] Crear `frontend/lib/api/locations.ts`
-- [ ] Crear `frontend/lib/api/inventory.ts`
-- [ ] Crear `frontend/lib/api/shipments.ts`
-- [ ] Crear `frontend/lib/api/orders.ts`
-- [ ] Crear `frontend/lib/api/dashboard.ts`
+- [x] Crear `frontend/lib/api/products.ts` (CRUD + getCategories)
+- [x] Crear `frontend/lib/api/suppliers.ts` (CRUD completo)
+- [x] Crear `frontend/lib/api/locations.ts` (CRUD + getAvailableCapacity)
+- [x] Crear `frontend/lib/api/inventory.ts` (getAll, getByProduct, getLowStock, adjust, move)
+- [x] Crear `frontend/lib/api/shipments.ts` (CRUD + receive)
+- [x] Crear `frontend/lib/api/orders.ts` (CRUD + pick + ship)
+- [x] Crear `frontend/lib/api/dashboard.ts` (getSummary)
 
 ---
 
@@ -553,7 +554,7 @@ Registrar automáticamente:
 
 ## 🎯 Estado Actual
 
-**Fase Actual**: ✅ **FASE 0-6 COMPLETADAS** | 🚧 **FASE 7: Frontend - Types y API Services** (En progreso)
+**Fase Actual**: ✅ **FASE 0-7 COMPLETADAS** | 🚧 **FASE 8: Frontend - Layout y Navegación** (Siguiente)
 
 ### ✅ Backend Completado (100%)
 - **14 tablas** en base de datos funcionando
@@ -579,17 +580,17 @@ Registrar automáticamente:
 - **user / user123** (Usuario básico)
 
 ### 🎯 Próximas Fases
-1. **FASE 7**: Frontend - Types y API Services 🎯 **← Siguiente**
-2. **FASE 8**: Frontend - Layout y navegación
-3. **FASE 9-11**: Frontend - Vistas CRUD y dashboard con gráficos
-4. **FASE 12-13**: Testing, refinamiento y documentación
+1. **FASE 8**: Frontend - Layout y navegación 🎯 **← Siguiente**
+2. **FASE 9-11**: Frontend - Vistas CRUD y dashboard con gráficos
+3. **FASE 12-13**: Testing, refinamiento y documentación
 
-### 📦 Frontend - Dependencias Instaladas
-- ✅ recharts ^3.2.1 (para gráficos del dashboard)
-- ✅ @types/recharts ^1.8.29 (tipos TypeScript)
+### 📦 Frontend - Completado
+- ✅ **Types**: 277 líneas de interfaces TypeScript
+- ✅ **API Services**: 7 módulos (products, suppliers, locations, inventory, shipments, orders, dashboard)
+- ✅ **Dependencias**: recharts ^3.2.1, @types/recharts ^1.8.29
 
 ---
 
 **Fecha de Inicio**: 16/10/2025  
-**Última Actualización**: 16/10/2025 - 15:15
+**Última Actualización**: 16/10/2025 - 15:30
 
