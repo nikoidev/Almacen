@@ -1,38 +1,37 @@
 version: '3.8'
 
 services:
-  usuarios_postgres:
+  sga_postgres:
     image: postgres:15
-    container_name: usuarios_postgres
+    container_name: sga_postgres
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: usuarios_db
+      POSTGRES_DB: sga_pro_db
     ports:
-      - "5433:5432"
+      - "5438:5432"
     volumes:
-      - usuarios_postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres_data:/var/lib/postgresql/data
     networks:
-      - usuarios_network
+      - sga_network
     restart: unless-stopped
 
-  usuarios_pgadmin:
+  sga_pgadmin:
     image: dpage/pgadmin4:latest
-    container_name: usuarios_pgadmin
+    container_name: sga_pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin123
     ports:
-      - "5051:80"
+      - "5058:80"
+    volumes:
+      - ./docker/pgadmin_data:/var/lib/pgadmin
     depends_on:
-      - usuarios_postgres
+      - sga_postgres
     networks:
-      - usuarios_network
+      - sga_network
     restart: unless-stopped
 
-volumes:
-  usuarios_postgres_data:
-
 networks:
-  usuarios_network:
+  sga_network:
     driver: bridge

@@ -9,9 +9,9 @@ from .api.routes import auth, users, roles, permissions, audit_logs, profile
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="User Management System API",
-    description="Complete CRUD API for Users, Roles, and Permissions with Audit Log",
-    version="2.0.0"
+    title="SGA Pro API",
+    description="Sistema de Gestión de Almacenes - Complete Warehouse Management System with Inventory Control, Inbound/Outbound Operations, RBAC and Audit Log",
+    version="1.0.0"
 )
 
 # Configure CORS
@@ -42,7 +42,14 @@ app.include_router(profile.router, prefix="/api/profile", tags=["Profile"])
 @app.get("/")
 def root():
     return {
-        "message": "User Management System API",
+        "message": "SGA Pro - Sistema de Gestión de Almacenes API",
         "version": "1.0.0",
-        "docs": "/docs"
+        "docs": "/docs",
+        "features": [
+            "Inventory Management",
+            "Product Catalog",
+            "Inbound Shipments",
+            "Outbound Orders",
+            "RBAC & Audit Log"
+        ]
     }
