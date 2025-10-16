@@ -114,6 +114,15 @@ docker-compose up -d
   - Email: `admin@admin.com`
   - Password: `admin123`
 
+**Volumen de datos**: Los datos de PostgreSQL y pgAdmin se guardan en `./docker/` (ignorado por git).
+
+**Para reiniciar la BD desde cero**:
+```bash
+docker-compose down
+rm -rf docker/  # o eliminar carpeta manualmente en Windows
+docker-compose up -d
+```
+
 ### 3️⃣ Configurar Backend
 
 ```bash

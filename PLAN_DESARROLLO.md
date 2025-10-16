@@ -213,14 +213,14 @@ Permisos asignados:
 - [x] Actualizar `backend/app/models/__init__.py`
 - [x] Crear tablas en la base de datos (14 tablas totales)
 
-#### Backend - Schemas Pydantic
-- [ ] Crear `backend/app/schemas/product.py`
-- [ ] Crear `backend/app/schemas/supplier.py`
-- [ ] Crear `backend/app/schemas/location.py`
-- [ ] Crear `backend/app/schemas/inventory.py`
-- [ ] Crear `backend/app/schemas/shipment.py`
-- [ ] Crear `backend/app/schemas/order.py`
-- [ ] Actualizar `backend/app/schemas/__init__.py`
+#### Backend - Schemas Pydantic ✅
+- [x] Crear `backend/app/schemas/product.py`
+- [x] Crear `backend/app/schemas/supplier.py`
+- [x] Crear `backend/app/schemas/location.py`
+- [x] Crear `backend/app/schemas/inventory.py`
+- [x] Crear `backend/app/schemas/shipment.py`
+- [x] Crear `backend/app/schemas/order.py`
+- [x] Actualizar `backend/app/schemas/__init__.py`
 
 #### Inicialización
 - [ ] Actualizar `backend/init_db.py` con nuevos permisos y roles
@@ -554,7 +554,13 @@ Registrar automáticamente:
 - users, roles, permissions, audit_logs
 - user_roles, role_permissions
 
-**Próximo Paso**: Crear schemas Pydantic y actualizar init_db.py con permisos del SGA
+**Schemas Pydantic**: ✅ Completados
+- product.py, supplier.py, location.py
+- inventory.py (incluye InventoryAdjust, InventoryMove)
+- shipment.py (incluye InboundShipmentReceive)
+- order.py (incluye OutboundOrderPick)
+
+**Próximo Paso**: Actualizar init_db.py con permisos y roles del SGA, luego crear servicios backend
 
 ---
 

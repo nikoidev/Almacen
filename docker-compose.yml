@@ -11,7 +11,7 @@ services:
     ports:
       - "5438:5432"
     volumes:
-      - sga_postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres_data:/var/lib/postgresql/data
     networks:
       - sga_network
     restart: unless-stopped
@@ -24,14 +24,13 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin123
     ports:
       - "5058:80"
+    volumes:
+      - ./docker/pgadmin_data:/var/lib/pgadmin
     depends_on:
       - sga_postgres
     networks:
       - sga_network
     restart: unless-stopped
-
-volumes:
-  sga_postgres_data:
 
 networks:
   sga_network:
