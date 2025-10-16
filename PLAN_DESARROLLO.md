@@ -365,16 +365,23 @@ Permisos asignados:
 
 ---
 
-### **FASE 8: Frontend - Layout y Navegación** (Día 11)
+### ✅ **FASE 8: Frontend - Layout y Navegación** (COMPLETADA)
 
-- [ ] Actualizar `frontend/components/Layout.tsx`
-  - Añadir enlaces de navegación:
-    - Dashboard (con gráficos)
-    - Inventario
-    - Productos
-    - Recepciones
-    - Pedidos
-    - (Mantener: Usuarios, Roles, Permisos, Perfil, Audit Logs)
+- [x] Actualizar `frontend/components/Layout.tsx`
+  - [x] Cambiar nombre a "SGA Pro - Sistema de Gestión de Almacenes"
+  - [x] Organizar navegación por secciones:
+    - **Dashboard**: Inicio (con gráficos)
+    - **Gestión de Almacén**: Inventario, Productos, Proveedores, Ubicaciones, Recepciones, Pedidos
+    - **Administración**: Usuarios, Roles, Permisos, Actividad
+  - [x] Agregar iconos de Heroicons:
+    - ChartBarIcon (Dashboard)
+    - ArchiveBoxIcon (Inventario)
+    - CubeIcon (Productos)
+    - BuildingStorefrontIcon (Proveedores)
+    - MapPinIcon (Ubicaciones)
+    - ArrowDownTrayIcon (Recepciones)
+    - ArrowUpTrayIcon (Pedidos)
+  - [x] Mantener perfil de usuario y logout
 
 ---
 
@@ -554,7 +561,7 @@ Registrar automáticamente:
 
 ## 🎯 Estado Actual
 
-**Fase Actual**: ✅ **FASE 0-7 COMPLETADAS** | 🚧 **FASE 8: Frontend - Layout y Navegación** (Siguiente)
+**Fase Actual**: ✅ **FASE 0-8 COMPLETADAS** | 🚧 **FASE 9: Frontend - Vistas CRUD** (Siguiente)
 
 ### ✅ Backend Completado (100%)
 - **14 tablas** en base de datos funcionando
@@ -580,17 +587,20 @@ Registrar automáticamente:
 - **user / user123** (Usuario básico)
 
 ### 🎯 Próximas Fases
-1. **FASE 8**: Frontend - Layout y navegación 🎯 **← Siguiente**
-2. **FASE 9-11**: Frontend - Vistas CRUD y dashboard con gráficos
-3. **FASE 12-13**: Testing, refinamiento y documentación
+1. **FASE 9**: Frontend - Vistas CRUD (Productos, Proveedores, Ubicaciones) 🎯 **← Siguiente**
+2. **FASE 10**: Frontend - Vista de Inventario y Operaciones
+3. **FASE 11**: Frontend - Dashboard con gráficos (Recharts)
+4. **FASE 12-13**: Testing, refinamiento y documentación
 
 ### 📦 Frontend - Completado
 - ✅ **Types**: 277 líneas de interfaces TypeScript
-- ✅ **API Services**: 7 módulos (products, suppliers, locations, inventory, shipments, orders, dashboard)
+- ✅ **API Services**: 7 módulos completos
+- ✅ **Layout**: Navegación organizada en 3 secciones con 11 enlaces
+- ✅ **Iconos**: Heroicons integrados para cada módulo
 - ✅ **Dependencias**: recharts ^3.2.1, @types/recharts ^1.8.29
 
 ---
 
 **Fecha de Inicio**: 16/10/2025  
-**Última Actualización**: 16/10/2025 - 15:30
+**Última Actualización**: 16/10/2025 - 15:45
 

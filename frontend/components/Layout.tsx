@@ -13,6 +13,13 @@ import {
   ArrowRightOnRectangleIcon,
   ClockIcon,
   UserCircleIcon,
+  ChartBarIcon,
+  CubeIcon,
+  BuildingStorefrontIcon,
+  MapPinIcon,
+  ArchiveBoxIcon,
+  ArrowDownTrayIcon,
+  ArrowUpTrayIcon,
 } from '@heroicons/react/24/outline'
 
 interface LayoutProps {
@@ -29,13 +36,38 @@ export default function Layout({ children }: LayoutProps) {
     router.push('/login')
   }
 
-  const navigation = [
-    { name: 'Panel', href: '/dashboard', icon: HomeIcon },
-    { name: 'Usuarios', href: '/users', icon: UsersIcon },
-    { name: 'Roles', href: '/roles', icon: ShieldCheckIcon },
-    { name: 'Permisos', href: '/permissions', icon: KeyIcon },
-    { name: 'Actividad', href: '/audit-logs', icon: ClockIcon },
+  // Navegación organizada por secciones
+  const navigationSections = [
+    {
+      title: 'Dashboard',
+      items: [
+        { name: 'Inicio', href: '/dashboard', icon: ChartBarIcon },
+      ]
+    },
+    {
+      title: 'Gestión de Almacén',
+      items: [
+        { name: 'Inventario', href: '/inventory', icon: ArchiveBoxIcon },
+        { name: 'Productos', href: '/products', icon: CubeIcon },
+        { name: 'Proveedores', href: '/suppliers', icon: BuildingStorefrontIcon },
+        { name: 'Ubicaciones', href: '/locations', icon: MapPinIcon },
+        { name: 'Recepciones', href: '/shipments', icon: ArrowDownTrayIcon },
+        { name: 'Pedidos', href: '/orders', icon: ArrowUpTrayIcon },
+      ]
+    },
+    {
+      title: 'Administración',
+      items: [
+        { name: 'Usuarios', href: '/users', icon: UsersIcon },
+        { name: 'Roles', href: '/roles', icon: ShieldCheckIcon },
+        { name: 'Permisos', href: '/permissions', icon: KeyIcon },
+        { name: 'Actividad', href: '/audit-logs', icon: ClockIcon },
+      ]
+    }
   ]
+
+  // Lista plana para encontrar el nombre de la página actual
+  const allNavigationItems = navigationSections.flatMap(section => section.items)
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -44,30 +76,44 @@ export default function Layout({ children }: LayoutProps) {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-gray-700">
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-              Gestión de Usuarios
-            </h1>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+                SGA Pro
+              </h1>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                Sistema de Gestión de Almacenes
+              </p>
+            </div>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-            {navigation.map((item) => {
-              const isActive = pathname === item.href
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                    isActive
-                      ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                  }`}
-                >
-                  <item.icon className="w-5 h-5 mr-3" />
-                  {item.name}
-                </Link>
-              )
-            })}
+          <nav className="flex-1 px-4 py-6 space-y-6 overflow-y-auto">
+            {navigationSections.map((section) => (
+              <div key={section.title}>
+                <h3 className="px-4 mb-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  {section.title}
+                </h3>
+                <div className="space-y-1">
+                  {section.items.map((item) => {
+                    const isActive = pathname === item.href
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className={`flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                          isActive
+                            ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                        }`}
+                      >
+                        <item.icon className="w-5 h-5 mr-3" />
+                        {item.name}
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
           </nav>
 
           {/* User info and actions */}
@@ -106,7 +152,7 @@ export default function Layout({ children }: LayoutProps) {
         {/* Top bar */}
         <div className="sticky top-0 z-10 flex items-center justify-between h-16 px-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
-            {navigation.find((item) => item.href === pathname)?.name || 'Dashboard'}
+            {allNavigationItems.find((item) => item.href === pathname)?.name || 'Dashboard'}
           </h2>
           <ThemeToggle />
         </div>
