@@ -3,7 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from .core.database import engine, Base
-from .api.routes import auth, users, roles, permissions, audit_logs, profile
+from .api.routes import (
+    auth, users, roles, permissions, audit_logs, profile,
+    products, suppliers, locations, inventory, shipments, orders
+)
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -30,13 +33,21 @@ uploads_dir.mkdir(exist_ok=True)
 # Serve uploaded files
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
-# Include routers
+# Include routers - Core
 app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(users.router, prefix="/api/users", tags=["Users"])
 app.include_router(roles.router, prefix="/api/roles", tags=["Roles"])
 app.include_router(permissions.router, prefix="/api/permissions", tags=["Permissions"])
 app.include_router(audit_logs.router, prefix="/api/audit-logs", tags=["Audit Logs"])
 app.include_router(profile.router, prefix="/api/profile", tags=["Profile"])
+
+# Include routers - SGA (Warehouse Management)
+app.include_router(products.router, prefix="/api/products", tags=["Products"])
+app.include_router(suppliers.router, prefix="/api/suppliers", tags=["Suppliers"])
+app.include_router(locations.router, prefix="/api/locations", tags=["Locations"])
+app.include_router(inventory.router, prefix="/api/inventory", tags=["Inventory"])
+app.include_router(shipments.router, prefix="/api/shipments", tags=["Inbound Shipments"])
+app.include_router(orders.router, prefix="/api/orders", tags=["Outbound Orders"])
 
 
 @app.get("/")
