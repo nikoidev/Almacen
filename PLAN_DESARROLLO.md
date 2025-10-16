@@ -331,13 +331,15 @@ Permisos asignados:
 
 ---
 
-### **FASE 6: Frontend - Dependencias** (Día 10)
+### ✅ **FASE 6: Frontend - Dependencias** (COMPLETADA)
 
-- [ ] Actualizar `frontend/package.json`:
+- [x] Actualizar `frontend/package.json`:
   ```bash
   npm install recharts
   npm install @types/recharts --save-dev
   ```
+- [x] Instalado `recharts ^3.2.1` (gráficos)
+- [x] Instalado `@types/recharts ^1.8.29` (tipos TypeScript)
 
 ---
 
@@ -551,7 +553,7 @@ Registrar automáticamente:
 
 ## 🎯 Estado Actual
 
-**Fase Actual**: ✅ **FASE 0-5 COMPLETADAS (Backend 100%)** | 🚧 **FASE 6: Frontend** (Siguiente)
+**Fase Actual**: ✅ **FASE 0-6 COMPLETADAS** | 🚧 **FASE 7: Frontend - Types y API Services** (En progreso)
 
 ### ✅ Backend Completado (100%)
 - **14 tablas** en base de datos funcionando
@@ -577,14 +579,17 @@ Registrar automáticamente:
 - **user / user123** (Usuario básico)
 
 ### 🎯 Próximas Fases
-1. **FASE 6**: Frontend - Instalar recharts
-2. **FASE 7**: Frontend - Types y API Services
-3. **FASE 8**: Frontend - Layout y navegación
-4. **FASE 9-11**: Frontend - Vistas CRUD y dashboard con gráficos
-5. **FASE 12-13**: Testing, refinamiento y documentación
+1. **FASE 7**: Frontend - Types y API Services 🎯 **← Siguiente**
+2. **FASE 8**: Frontend - Layout y navegación
+3. **FASE 9-11**: Frontend - Vistas CRUD y dashboard con gráficos
+4. **FASE 12-13**: Testing, refinamiento y documentación
+
+### 📦 Frontend - Dependencias Instaladas
+- ✅ recharts ^3.2.1 (para gráficos del dashboard)
+- ✅ @types/recharts ^1.8.29 (tipos TypeScript)
 
 ---
 
 **Fecha de Inicio**: 16/10/2025  
-**Última Actualización**: 16/10/2025 - 15:00
+**Última Actualización**: 16/10/2025 - 15:15
 
