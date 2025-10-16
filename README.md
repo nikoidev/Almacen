@@ -1,76 +1,85 @@
-# 🚀 Sistema de Gestión de Usuarios - Base Universal
+# 🏭 SGA Pro - Sistema de Gestión de Almacenes
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-2.0.0-009688.svg?logo=fastapi)](https://fastapi.tiangolo.com)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-009688.svg?logo=fastapi)](https://fastapi.tiangolo.com)
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.33-black.svg?logo=next.js)](https://nextjs.org)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-316192.svg?logo=postgresql)](https://www.postgresql.org)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-316192.svg?logo=postgresql)](https://www.postgresql.org)
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB.svg?logo=python)](https://www.python.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6.svg?logo=typescript)](https://www.typescriptlang.org)
 
-> **Base sólida y profesional para cualquier proyecto que necesite gestión de usuarios, roles y permisos.** Sistema completo y listo para producción que sirve como fundamento para proyectos de gestión empresarial, e-commerce, sistemas médicos, almacenes, producción y más.
+> **Sistema completo de gestión de almacenes (Warehouse Management System - WMS) con control de inventario, recepciones, pedidos, y dashboard con métricas en tiempo real.** Incluye gestión de usuarios, roles y permisos (RBAC), audit log completo, y arquitectura profesional lista para producción.
 
 ---
 
 ## ✨ Características Principales
 
-### 🔐 **Autenticación y Seguridad**
-- ✅ **JWT con Refresh Tokens** - Tokens de acceso (30 min) y renovación automática (7 días)
-- ✅ **Rate Limiting** - Protección contra ataques de fuerza bruta
-- ✅ **Recuperación de Contraseña** - Sistema completo vía email con tokens seguros
-- ✅ **Cambio de Contraseña** - Con validación de contraseña actual
-- ✅ **Validación de Fuerza** - Indicador visual en tiempo real
-- ✅ **Encriptación de Datos Sensibles** - Contraseñas SMTP encriptadas con Fernet
+### 📦 **Gestión de Almacén**
+- ✅ **Control de Inventario** - Stock en tiempo real por producto y ubicación
+- ✅ **Gestión de Productos** - Catálogo completo con SKU, categorías, precios
+- ✅ **Ubicaciones** - Sistema de códigos (Pasillo-Estante-Sección)
+- ✅ **Recepciones de Mercancía** - Inbound con proveedores
+- ✅ **Pedidos de Salida** - Outbound con picking y tracking
+- ✅ **Movimientos de Stock** - Transferencias entre ubicaciones
+- ✅ **Alertas de Bajo Stock** - Notificaciones automáticas
 
-### 👥 **Gestión de Usuarios Completa**
+### 📊 **Dashboard y Métricas**
+- ✅ **KPIs en Tiempo Real** - Total productos, unidades, valor del inventario
+- ✅ **Gráficos Interactivos** - Recharts con barras, circular, líneas
+- ✅ **Top Productos** - Ranking por stock, movimientos, valor
+- ✅ **Distribución por Categoría** - Visualización de stock
+- ✅ **Actividad Reciente** - Entradas vs salidas últimos 30 días
+
+### 🔐 **Autenticación y Seguridad**
+- ✅ **JWT con Refresh Tokens** - Sesiones seguras (30 min + renovación 7 días)
+- ✅ **RBAC Avanzado** - Control de acceso basado en roles
+- ✅ **Rate Limiting** - Protección contra ataques de fuerza bruta
+- ✅ **Audit Log Completo** - Registro de todas las operaciones
+- ✅ **Encriptación** - Datos sensibles protegidos con Fernet
+
+### 👥 **Gestión de Usuarios**
 - ✅ **CRUD Completo** - Crear, leer, actualizar y eliminar usuarios
-- ✅ **Perfil Profesional** - Avatar, teléfono, biografía, zona horaria, idioma
-- ✅ **Upload de Avatar** - Con validación de tipo y tamaño (máx 5MB)
+- ✅ **Perfil Profesional** - Avatar, teléfono, biografía, zona horaria
 - ✅ **Roles Múltiples** - Un usuario puede tener varios roles
 - ✅ **Estados** - Activar/desactivar usuarios
 
-### 🛡️ **Sistema RBAC (Role-Based Access Control)**
-- ✅ **Roles** - Agrupación de permisos reutilizables
-- ✅ **Permisos** - Control granular por recurso y acción
-- ✅ **Asignación Dinámica** - Cambios en vivo sin reiniciar
-
-### 📊 **Funcionalidades Avanzadas**
+### 🎨 **Interfaz Moderna**
+- ✅ **Tema Oscuro/Claro** - Toggle persistente con transiciones suaves
+- ✅ **Diseño Responsive** - Mobile, tablet y desktop
 - ✅ **Paginación Inteligente** - 10/25/50/100 items por página
 - ✅ **Búsqueda en Tiempo Real** - Con debounce (500ms)
-- ✅ **Filtros Múltiples** - Por rol, estado, recurso, acción
-- ✅ **Ordenamiento** - Por cualquier columna (ascendente/descendente)
-- ✅ **Audit Log** - Registro completo de actividades con IP y user agent
-- ✅ **Historial de Actividad** - Ver últimas acciones de cualquier usuario
-
-### 🎨 **Interfaz Moderna**
-- ✅ **Tema Oscuro/Claro** - Toggle persistente
-- ✅ **Diseño Responsive** - Mobile, tablet y desktop
-- ✅ **Componentes Reutilizables** - Paginación, validación, etc.
-- ✅ **Toast Notifications** - Feedback visual inmediato
-- ✅ **Iconos** - Heroicons v2
+- ✅ **Filtros Múltiples** - Combinables por categoría, estado, rol
 
 ---
 
 ## 🏗️ Arquitectura del Sistema
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                         Frontend                             │
-│  Next.js 14 + TypeScript + Tailwind CSS + React Hooks       │
-│  - Páginas: Dashboard, Users, Roles, Permissions, Profile   │
-│  - Componentes reutilizables + Context API                  │
-└──────────────────────┬──────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                         Frontend                                 │
+│  Next.js 14 + TypeScript + Tailwind CSS + Recharts              │
+│  - Dashboard con gráficos (KPIs, barras, circular)              │
+│  - Inventario: Stock en tiempo real                             │
+│  - Productos: Catálogo completo                                 │
+│  - Recepciones/Pedidos: Gestión de inbound/outbound            │
+│  - Usuarios/Roles/Permisos: RBAC                                │
+└──────────────────────┬──────────────────────────────────────────┘
                        │ HTTP/REST API
-┌──────────────────────┴──────────────────────────────────────┐
-│                         Backend                              │
-│          FastAPI + SQLAlchemy + Pydantic + JWT              │
-│  - Autenticación JWT + Refresh Tokens                       │
-│  - RBAC + Audit Log + Rate Limiting                         │
-└──────────────────────┬──────────────────────────────────────┘
+┌──────────────────────┴──────────────────────────────────────────┐
+│                         Backend                                  │
+│          FastAPI + SQLAlchemy + Pydantic + JWT                  │
+│  - API RESTful con Swagger docs                                 │
+│  - Servicios: Inventory, Products, Orders, Shipments            │
+│  - RBAC: Control de permisos granular                           │
+│  - Audit Log: Registro completo de operaciones                  │
+└──────────────────────┬──────────────────────────────────────────┘
                        │
-┌──────────────────────┴──────────────────────────────────────┐
-│                       PostgreSQL 16                          │
-│      Tables: users, roles, permissions, audit_logs          │
-│         Relaciones: user_roles, role_permissions            │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────┴──────────────────────────────────────────┐
+│                       PostgreSQL 15                              │
+│  Tables: users, roles, permissions, audit_logs                  │
+│          products, inventory, locations, suppliers              │
+│          inbound_shipments, outbound_orders                     │
+│  Relaciones: user_roles, role_permissions                       │
+│  Índices: SKU, location_code, product_id                        │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -89,8 +98,8 @@
 ### 1️⃣ Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/user-management-system.git
-cd user-management-system
+git clone https://github.com/tu-usuario/sga-pro.git
+cd sga-pro
 ```
 
 ### 2️⃣ Iniciar Base de Datos (PostgreSQL + pgAdmin)
@@ -100,35 +109,35 @@ docker-compose up -d
 ```
 
 **Accesos:**
-- **PostgreSQL**: `localhost:5433`
-- **pgAdmin**: `http://localhost:5050`
+- **PostgreSQL**: `localhost:5438`
+- **pgAdmin**: `http://localhost:5058`
   - Email: `admin@admin.com`
-  - Password: `admin`
+  - Password: `admin123`
 
 ### 3️⃣ Configurar Backend
 
 ```bash
 cd backend
 
-# Instalar dependencias
+# Instalar dependencias con pipenv
 pipenv install
+
+# Activar entorno virtual
+pipenv shell
 
 # Configurar variables de entorno
 cp .env.example .env
-# Edita .env con tus valores
+# Edita .env con tus valores (DATABASE_URL, SECRET_KEY, etc.)
 
-# Ejecutar migraciones
-pipenv run python migrate_to_v2.py
+# Inicializar base de datos (crear tablas, permisos, roles, usuarios)
+python init_db.py
 
-# Inicializar datos (usuarios, roles, permisos)
-pipenv run python init_db.py
-
-# Iniciar servidor
-pipenv run python run.py
+# Iniciar servidor FastAPI
+python run.py
 ```
 
-Backend corriendo en: **http://localhost:8000**  
-Documentación API: **http://localhost:8000/docs**
+**Backend corriendo en**: `http://localhost:8000`  
+**Documentación API**: `http://localhost:8000/docs`
 
 ### 4️⃣ Configurar Frontend
 
@@ -145,7 +154,7 @@ npm run build
 npm run start
 ```
 
-Frontend corriendo en: **http://localhost:3000**
+**Frontend corriendo en**: `http://localhost:3000`
 
 ---
 
@@ -156,9 +165,13 @@ Administrador:
   Usuario: admin
   Contraseña: admin123
 
-Usuario Regular:
-  Usuario: user
-  Contraseña: user123
+Jefe de Almacén:
+  Usuario: jefe_almacen
+  Contraseña: almacen123
+
+Operario:
+  Usuario: operario
+  Contraseña: operario123
 ```
 
 ⚠️ **IMPORTANTE**: Cambiar estas credenciales en producción.
@@ -168,53 +181,91 @@ Usuario Regular:
 ## 📚 Estructura del Proyecto
 
 ```
-user-management-system/
-├── backend/                  # API FastAPI
+sga-pro/
+├── backend/                    # API FastAPI
 │   ├── app/
-│   │   ├── api/             # Endpoints REST
-│   │   │   ├── routes/      # auth, users, roles, permissions, audit_logs, profile
-│   │   │   └── deps.py      # Dependencias (auth, db)
-│   │   ├── core/            # Configuración central
-│   │   │   ├── config.py    # Variables de entorno
-│   │   │   ├── security.py  # JWT, hashing
-│   │   │   ├── database.py  # SQLAlchemy engine
-│   │   │   └── encryption.py # Fernet encryption
-│   │   ├── models/          # Modelos SQLAlchemy
-│   │   ├── schemas/         # Schemas Pydantic
-│   │   ├── services/        # Lógica de negocio
-│   │   ├── utils/           # Utilidades (audit)
-│   │   └── templates/       # Templates HTML para emails
-│   ├── uploads/             # Archivos subidos (avatars)
-│   ├── Pipfile              # Dependencias Python
-│   ├── init_db.py           # Script de inicialización
-│   ├── migrate_to_v2.py     # Script de migración
-│   └── run.py               # Entry point
+│   │   ├── api/               # Endpoints REST
+│   │   │   ├── routes/
+│   │   │   │   ├── auth.py           # Autenticación
+│   │   │   │   ├── users.py          # Gestión de usuarios
+│   │   │   │   ├── roles.py          # Gestión de roles
+│   │   │   │   ├── permissions.py    # Gestión de permisos
+│   │   │   │   ├── products.py       # 📦 Catálogo de productos
+│   │   │   │   ├── inventory.py      # 📊 Control de inventario
+│   │   │   │   ├── locations.py      # 📍 Ubicaciones
+│   │   │   │   ├── suppliers.py      # 🏭 Proveedores
+│   │   │   │   ├── shipments.py      # 📥 Recepciones
+│   │   │   │   ├── orders.py         # 📤 Pedidos
+│   │   │   │   ├── dashboard.py      # 📈 Dashboard
+│   │   │   │   ├── audit_logs.py     # Registro de actividad
+│   │   │   │   └── profile.py        # Perfil de usuario
+│   │   │   └── deps.py        # Dependencias (auth, db)
+│   │   ├── core/              # Configuración central
+│   │   │   ├── config.py      # Variables de entorno
+│   │   │   ├── security.py    # JWT, hashing
+│   │   │   └── database.py    # SQLAlchemy engine
+│   │   ├── models/            # Modelos SQLAlchemy
+│   │   │   ├── user.py
+│   │   │   ├── role.py
+│   │   │   ├── permission.py
+│   │   │   ├── product.py              # 📦
+│   │   │   ├── supplier.py             # 🏭
+│   │   │   ├── location.py             # 📍
+│   │   │   ├── inventory.py            # 📊
+│   │   │   ├── inbound_shipment.py     # 📥
+│   │   │   ├── outbound_order.py       # 📤
+│   │   │   └── audit_log.py
+│   │   ├── schemas/           # Schemas Pydantic
+│   │   ├── services/          # Lógica de negocio
+│   │   │   ├── user_service.py
+│   │   │   ├── product_service.py      # 📦
+│   │   │   ├── inventory_service.py    # 📊 CORE
+│   │   │   ├── shipment_service.py     # 📥
+│   │   │   ├── order_service.py        # 📤
+│   │   │   └── dashboard_service.py    # 📈
+│   │   └── utils/             # Utilidades (audit)
+│   ├── uploads/               # Archivos subidos (avatars)
+│   ├── Pipfile                # Dependencias Python
+│   ├── init_db.py             # Script de inicialización
+│   └── run.py                 # Entry point
 │
-├── frontend/                # App Next.js
-│   ├── app/                 # App Router
-│   │   ├── dashboard/       # Panel principal
-│   │   ├── users/           # Gestión de usuarios
-│   │   ├── roles/           # Gestión de roles
-│   │   ├── permissions/     # Gestión de permisos
-│   │   ├── profile/         # Perfil profesional
-│   │   ├── audit-logs/      # Registro de actividad
-│   │   └── login/           # Página de inicio de sesión
-│   ├── components/          # Componentes reutilizables
-│   │   ├── Layout.tsx       # Layout principal
-│   │   ├── Pagination.tsx   # Componente de paginación
-│   │   └── PasswordStrength.tsx # Validador de contraseña
-│   ├── contexts/            # React Contexts
-│   │   ├── AuthContext.tsx  # Autenticación global
-│   │   └── ThemeContext.tsx # Tema oscuro/claro
-│   ├── hooks/               # Custom Hooks
-│   │   └── useDebounce.ts   # Hook de debounce
-│   ├── lib/                 # Utilidades
-│   │   ├── api/             # Servicios API
-│   │   └── axios.ts         # Cliente HTTP
-│   ├── types/               # TypeScript types
+├── frontend/                  # App Next.js
+│   ├── app/                   # App Router
+│   │   ├── dashboard/         # 📈 Dashboard con gráficos
+│   │   ├── inventory/         # 📊 Control de inventario
+│   │   ├── products/          # 📦 Gestión de productos
+│   │   ├── inbound/           # 📥 Recepciones
+│   │   ├── outbound/          # 📤 Pedidos
+│   │   ├── users/             # Gestión de usuarios
+│   │   ├── roles/             # Gestión de roles
+│   │   ├── permissions/       # Gestión de permisos
+│   │   ├── profile/           # Perfil profesional
+│   │   ├── audit-logs/        # Registro de actividad
+│   │   └── login/             # Página de inicio de sesión
+│   ├── components/            # Componentes reutilizables
+│   │   ├── Layout.tsx         # Layout principal
+│   │   ├── Pagination.tsx     # Componente de paginación
+│   │   ├── PasswordStrength.tsx # Validador de contraseña
+│   │   └── charts/            # 📊 Componentes de gráficos
+│   ├── contexts/              # React Contexts
+│   │   ├── AuthContext.tsx    # Autenticación global
+│   │   └── ThemeContext.tsx   # Tema oscuro/claro
+│   ├── hooks/                 # Custom Hooks
+│   │   └── useDebounce.ts     # Hook de debounce
+│   ├── lib/                   # Utilidades
+│   │   ├── api/               # Servicios API
+│   │   │   ├── products.ts       # 📦
+│   │   │   ├── inventory.ts      # 📊
+│   │   │   ├── shipments.ts      # 📥
+│   │   │   ├── orders.ts         # 📤
+│   │   │   └── dashboard.ts      # 📈
+│   │   └── axios.ts           # Cliente HTTP
+│   ├── types/                 # TypeScript types
 │   └── package.json
 │
-└── docker-compose.yml       # PostgreSQL + pgAdmin
+├── docker-compose.yml         # PostgreSQL + pgAdmin
+├── PLAN_DESARROLLO.md         # 📋 Plan detallado fase por fase
+└── README.md                  # Este archivo
 ```
 
 ---
@@ -225,7 +276,7 @@ user-management-system/
 
 ```env
 # Database
-DATABASE_URL=postgresql://postgres:postgres@localhost:5433/users_db
+DATABASE_URL=postgresql://admin:admin123@localhost:5438/sga_pro_db
 
 # Security
 SECRET_KEY=tu-clave-secreta-muy-larga-y-segura-aqui
@@ -235,6 +286,12 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 # CORS
 CORS_ORIGINS=http://localhost:3000
+
+# Email (opcional - para recuperación de contraseña)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=tu-email@gmail.com
+SMTP_PASSWORD=tu-contraseña-encriptada
 ```
 
 ### Frontend
@@ -245,71 +302,126 @@ No requiere variables de entorno. La URL del backend está configurada en `lib/a
 
 ## 📖 Uso del Sistema
 
-### Gestión de Usuarios
+### 📦 Gestión de Productos
 
-1. **Crear Usuario**: Click en "Nuevo Usuario" → Rellenar formulario → Asignar roles
-2. **Editar Usuario**: Click en ícono de edición → Modificar datos → Guardar
-3. **Eliminar Usuario**: Click en ícono de eliminar → Confirmar
-4. **Buscar**: Escribir en el campo de búsqueda (busca en nombre, email, username)
-5. **Filtrar**: Click en "Filtros" → Seleccionar rol y/o estado
-6. **Ordenar**: Click en cualquier header de columna
+1. **Crear Producto**: `/products` → "Nuevo Producto" → Rellenar formulario (SKU, nombre, precio, categoría, stock mínimo)
+2. **Editar Producto**: Click en ícono de edición → Modificar → Guardar
+3. **Eliminar Producto**: Click en ícono de eliminar → Confirmar
+4. **Buscar**: Escribir en campo de búsqueda (busca en SKU, nombre, categoría)
 
-### Perfil Personal
+### 📊 Control de Inventario
 
-- **Actualizar Información**: `/profile` → Editar campos → Guardar
-- **Cambiar Avatar**: Click en "Cambiar Foto" → Seleccionar imagen → Automático
-- **Eliminar Avatar**: Click en "Eliminar Foto"
+1. **Ver Stock**: `/inventory` → Lista de todo el inventario (producto, ubicación, cantidad)
+2. **Mover Stock**: Seleccionar producto → "Mover" → Elegir ubicación destino
+3. **Ajustar Stock**: Seleccionar producto → "Ajustar" → Ingresar nueva cantidad
+4. **Consultar por Producto**: Buscar SKU → Ver stock en todas las ubicaciones
 
-### Audit Log
+### 📥 Recepciones de Mercancía
 
-- **Ver Actividad**: `/audit-logs` → Lista de todas las acciones
-- **Filtrar**: Por acción, recurso, usuario
-- **Ver Detalles**: Click en cualquier registro → Modal con información completa
+1. **Crear Recepción**: `/inbound` → "Nueva Recepción" → Seleccionar proveedor → Añadir productos esperados
+2. **Procesar Recepción**: Click en recepción pendiente → Ingresar cantidades recibidas → "Completar"
+3. **Ver Historial**: Lista de todas las recepciones con filtros por estado
+
+### 📤 Pedidos de Salida
+
+1. **Crear Pedido**: `/outbound` → "Nuevo Pedido" → Ingresar cliente → Añadir productos
+2. **Realizar Picking**: Click en pedido → "Iniciar Picking" → Confirmar cantidades → "Completar"
+3. **Marcar Enviado**: Click en pedido empacado → "Marcar como Enviado"
+
+### 📈 Dashboard
+
+- **KPIs**: Visualiza totales de productos, unidades, valor del inventario
+- **Gráficos**: Barras (top productos), circular (distribución), líneas (actividad)
+- **Alertas**: Lista de productos con bajo stock que requieren reabastecimiento
+
+### 👥 Gestión de Usuarios
+
+1. **Crear Usuario**: `/users` → "Nuevo Usuario" → Asignar roles (Operario, Jefe de Almacén, Admin)
+2. **Editar Usuario**: Click en ícono de edición → Modificar roles/permisos
+3. **Activar/Desactivar**: Toggle de estado activo
 
 ---
 
 ## 🔌 API Endpoints
 
-### Autenticación
+### 📦 Productos
 
 | Método | Endpoint | Descripción | Auth |
 |--------|----------|-------------|------|
-| POST | `/api/auth/login` | Iniciar sesión | No |
-| GET | `/api/auth/me` | Usuario actual | Sí |
-| POST | `/api/auth/refresh` | Renovar token | No |
-| POST | `/api/auth/forgot-password` | Solicitar recuperación | No |
-| POST | `/api/auth/reset-password` | Resetear contraseña | No |
-| POST | `/api/auth/change-password` | Cambiar contraseña | Sí |
-| POST | `/api/auth/logout` | Cerrar sesión | Sí |
+| GET | `/api/products/` | Listar productos (paginado) | Sí |
+| GET | `/api/products/{id}` | Obtener producto | Sí |
+| POST | `/api/products/` | Crear producto | Sí |
+| PUT | `/api/products/{id}` | Actualizar producto | Sí |
+| DELETE | `/api/products/{id}` | Eliminar producto | Sí |
 
-### Usuarios
+### 📊 Inventario
 
 | Método | Endpoint | Descripción | Auth |
 |--------|----------|-------------|------|
-| GET | `/api/users/` | Listar usuarios (paginado) | Sí |
-| GET | `/api/users/{id}` | Obtener usuario | Sí |
-| POST | `/api/users/` | Crear usuario | Sí |
-| PUT | `/api/users/{id}` | Actualizar usuario | Sí |
-| DELETE | `/api/users/{id}` | Eliminar usuario | Sí |
+| GET | `/api/inventory/` | Consultar inventario | Sí |
+| GET | `/api/inventory/product/{id}` | Stock por producto | Sí |
+| POST | `/api/inventory/adjust` | Ajustar stock | Sí |
+| POST | `/api/inventory/move` | Mover stock | Sí |
 
-### Perfil
-
-| Método | Endpoint | Descripción | Auth |
-|--------|----------|-------------|------|
-| GET | `/api/profile/me` | Obtener mi perfil | Sí |
-| PUT | `/api/profile/me` | Actualizar mi perfil | Sí |
-| POST | `/api/profile/upload-avatar` | Subir avatar | Sí |
-| DELETE | `/api/profile/avatar` | Eliminar avatar | Sí |
-
-### Audit Logs
+### 📥 Recepciones
 
 | Método | Endpoint | Descripción | Auth |
 |--------|----------|-------------|------|
-| GET | `/api/audit-logs/` | Listar logs (paginado) | Sí |
-| GET | `/api/audit-logs/recent` | Logs recientes | Sí |
-| GET | `/api/audit-logs/my-activity` | Mi actividad | Sí |
+| GET | `/api/shipments/` | Listar recepciones | Sí |
+| POST | `/api/shipments/` | Crear recepción | Sí |
+| POST | `/api/shipments/{id}/receive` | Procesar recepción | Sí |
+
+### 📤 Pedidos
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/orders/` | Listar pedidos | Sí |
+| POST | `/api/orders/` | Crear pedido | Sí |
+| POST | `/api/orders/{id}/pick` | Realizar picking | Sí |
+| POST | `/api/orders/{id}/ship` | Marcar como enviado | Sí |
+
+### 📈 Dashboard
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/dashboard/summary` | Métricas y KPIs | Sí |
 
 📖 **Documentación Completa**: http://localhost:8000/docs
+
+---
+
+## 🛡️ Sistema de Permisos
+
+### Roles Predefinidos
+
+#### 👨‍💼 Administrador
+- Acceso total al sistema
+- Gestión de usuarios, roles y permisos
+- Todas las operaciones de almacén
+
+#### 🏭 Jefe de Almacén
+- Gestión completa de almacén
+- Crear productos, proveedores, ubicaciones
+- Procesar recepciones y pedidos
+- Ver dashboard con métricas
+
+#### 📦 Operario de Almacén
+- Consultar inventario
+- Procesar recepciones
+- Realizar picking de pedidos
+- Sin acceso a creación de productos
+
+### Permisos Granulares
+
+```
+product:create, product:read, product:update, product:delete
+inventory:read, inventory:move, inventory:adjust
+shipment:create, shipment:read, shipment:receive
+order:create, order:read, order:pick, order:ship
+dashboard:view
+user:create, user:read, user:update, user:delete
+role:create, role:read, role:update, role:delete
+```
 
 ---
 
@@ -320,14 +432,11 @@ No requiere variables de entorno. La URL del backend está configurada en `lib/a
 ```bash
 cd backend
 
-# Activar entorno
+# Activar entorno virtual
 pipenv shell
 
 # Instalar nueva dependencia
 pipenv install nombre-paquete
-
-# Ejecutar tests (cuando se implementen)
-pipenv run pytest
 
 # Formatear código
 pipenv run black app/
@@ -388,77 +497,85 @@ npm run build
 npm run start
 ```
 
-O despliega en **Vercel** (recomendado para Next.js):
+O despliega en **Vercel** (recomendado):
 ```bash
 vercel deploy --prod
 ```
-
-### Base de Datos
-
-Usa un servicio gestionado como:
-- **AWS RDS**
-- **Digital Ocean Managed Database**
-- **Heroku Postgres**
-- **Railway**
 
 ---
 
 ## 🎯 Casos de Uso
 
-Este sistema sirve como base para:
-
-### ✅ **Sistemas de Gestión Empresarial**
-- ERP, CRM, gestión de inventarios
-- Control de acceso por departamentos
-- Audit log para cumplimiento normativo
+### ✅ **Almacenes y Centros de Distribución**
+- Control de inventario en tiempo real
+- Gestión de múltiples ubicaciones
+- Tracking de recepciones y despachos
+- Alertas de reabastecimiento
 
 ### ✅ **E-Commerce**
-- Gestión de administradores y vendedores
-- Diferentes niveles de acceso (admin, ventas, soporte)
-- Registro de todas las operaciones
+- Integración con tienda online
+- Gestión de pedidos y fulfillment
+- Control de stock por canal
+- Dashboard con métricas de ventas
 
-### ✅ **Sistemas Médicos**
-- Control de acceso a historias clínicas
-- Diferentes roles (médicos, enfermeras, admin)
-- Trazabilidad completa (HIPAA compliance)
+### ✅ **Manufactura**
+- Control de materias primas
+- Gestión de productos terminados
+- Trazabilidad completa
+- Integración con producción
 
-### ✅ **Plataformas Educativas**
-- Gestión de profesores, estudiantes, administradores
-- Permisos por curso/materia
-- Registro de actividades académicas
-
-### ✅ **Sistemas de Producción/Manufactura**
-- Control de acceso a líneas de producción
-- Roles: operadores, supervisores, gerentes
-- Audit log de cambios en producción
+### ✅ **Distribución**
+- Gestión de proveedores
+- Control de múltiples almacenes
+- Optimización de rutas de picking
+- Análisis de rotación de inventario
 
 ---
 
-## 🧩 Extensibilidad
+## 📊 Tecnologías Utilizadas
 
-### Agregar Nuevos Módulos
+### Backend
+- **FastAPI** 0.115.0 - Framework web moderno y rápido
+- **SQLAlchemy** 2.0.36 - ORM para Python
+- **PostgreSQL** 15 - Base de datos relacional
+- **Pydantic** 2.10.0 - Validación de datos
+- **JWT** - Autenticación con tokens
+- **Bcrypt** - Hashing de contraseñas
 
-1. **Backend**: Crear modelo → schema → servicio → ruta
-2. **Frontend**: Crear página → componente → API service
-3. **Integrar**: Registrar ruta en `main.py` y link en `Layout.tsx`
+### Frontend
+- **Next.js** 14.2.33 - Framework React para producción
+- **TypeScript** 5.2.2 - JavaScript con tipos
+- **Tailwind CSS** 3.3.5 - Framework CSS utility-first
+- **Recharts** - Librería de gráficos
+- **Axios** - Cliente HTTP
+- **Heroicons** - Iconos SVG
 
-### Ejemplo: Agregar módulo de "Productos"
+---
 
-```python
-# backend/app/models/product.py
-class Product(Base):
-    __tablename__ = "products"
-    id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    # ... más campos
-```
+## 📈 Roadmap
 
-```typescript
-// frontend/app/products/page.tsx
-export default function ProductsPage() {
-  // Similar estructura a users/page.tsx
-}
-```
+### Fase 1: Core (Completado)
+- [x] Sistema de usuarios, roles y permisos
+- [x] Autenticación JWT
+- [x] Audit log
+
+### Fase 2: Almacén Básico (En Desarrollo)
+- [ ] Gestión de productos
+- [ ] Control de inventario
+- [ ] Ubicaciones
+- [ ] Dashboard básico
+
+### Fase 3: Operaciones (Planeado)
+- [ ] Recepciones de mercancía
+- [ ] Pedidos de salida
+- [ ] Movimientos de stock
+- [ ] Alertas automáticas
+
+### Fase 4: Analytics (Futuro)
+- [ ] Reportes avanzados
+- [ ] Predicción de demanda
+- [ ] Optimización de stock
+- [ ] Exportación de datos (CSV, Excel, PDF)
 
 ---
 
@@ -470,6 +587,8 @@ export default function ProductsPage() {
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
+Ver `CONTRIBUTING.md` para más detalles.
+
 ---
 
 ## 📄 Licencia
@@ -478,11 +597,20 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más información.
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Equipo
 
-**Tu Nombre**
-- GitHub: [@tu-usuario](https://github.com/tu-usuario)
-- Email: tu@email.com
+**Desarrolladores**
+- GitHub: [@nikoidev](https://github.com/nikoidev)
+
+---
+
+## 📞 Soporte
+
+¿Problemas o preguntas? 
+
+- 📖 [Documentación](PLAN_DESARROLLO.md)
+- 🐛 [Issues](https://github.com/nikoidev/sga-pro/issues)
+- 💬 [Discussions](https://github.com/nikoidev/sga-pro/discussions)
 
 ---
 
@@ -491,19 +619,14 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más información.
 - [FastAPI](https://fastapi.tiangolo.com/) - Framework backend moderno y rápido
 - [Next.js](https://nextjs.org/) - Framework React para producción
 - [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utility-first
+- [Recharts](https://recharts.org/) - Librería de gráficos para React
 - [Heroicons](https://heroicons.com/) - Iconos hermosos
 
 ---
 
-## 📞 Soporte
-
-¿Problemas o preguntas? 
-
-- 📖 [Wiki](https://github.com/tu-usuario/repo/wiki)
-- 🐛 [Issues](https://github.com/tu-usuario/repo/issues)
-- 💬 [Discussions](https://github.com/tu-usuario/repo/discussions)
-
----
+<p align="center">
+  <strong>📦 SGA Pro - Tu solución completa de gestión de almacenes 📦</strong>
+</p>
 
 <p align="center">
   Hecho con ❤️ para la comunidad Open Source
