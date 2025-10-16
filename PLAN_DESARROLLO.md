@@ -306,23 +306,28 @@ Permisos asignados:
 
 ---
 
-### **FASE 5: Backend - Dashboard** (Día 9)
+### ✅ **FASE 5: Backend - Dashboard** (COMPLETADA)
 
-- [ ] Crear `backend/app/services/dashboard_service.py`
+- [x] Crear `backend/app/schemas/dashboard.py`
+  - DashboardSummary, StockByCategory, TopProduct
+  - LowStockAlert, MovementData, WarehouseUtilization
+  
+- [x] Crear `backend/app/services/dashboard_service.py`
   - `get_summary()` con métricas agregadas:
     - `total_products`: Conteo de productos
     - `total_stock_units`: Suma de unidades en inventario
     - `total_stock_value`: Suma de (quantity * price)
     - `low_stock_products`: Lista de productos bajo umbral
     - `stock_by_category`: Agrupación por categoría
-    - `inbound_vs_outbound_last_30_days`: Recepciones vs salidas
+    - `movements_last_30_days`: Recepciones vs salidas (30 días)
     - `top_products_by_stock`: Top 5 productos con más stock
     - `warehouse_utilization`: Capacidad ocupada vs total
   
-- [ ] Crear `backend/app/api/routes/dashboard.py`
+- [x] Crear `backend/app/api/routes/dashboard.py`
   - GET `/api/dashboard/summary`
   
-- [ ] Registrar router en `main.py`
+- [x] Registrar router en `main.py`
+- [x] Actualizar __init__.py en schemas y services
 
 ---
 
@@ -546,12 +551,12 @@ Registrar automáticamente:
 
 ## 🎯 Estado Actual
 
-**Fase Actual**: ✅ FASE 0-4 COMPLETADAS | 🚧 **FASE 5: Backend - Dashboard** (En progreso)
+**Fase Actual**: ✅ **FASE 0-5 COMPLETADAS (Backend 100%)** | 🚧 **FASE 6: Frontend** (Siguiente)
 
 ### ✅ Backend Completado (100%)
 - **14 tablas** en base de datos funcionando
-- **6 módulos de servicios** con lógica de negocio completa
-- **6 routers de API** con todos los endpoints CRUD
+- **7 módulos de servicios** con lógica de negocio completa (incluye Dashboard)
+- **7 routers de API** con todos los endpoints CRUD + Analytics
 - **Schemas Pydantic** validados
 - **Base de datos** inicializada con usuarios y permisos
 - **CI/CD** configurado (GitHub Actions)
@@ -565,19 +570,21 @@ Registrar automáticamente:
 - ✅ `/api/inventory/` - Control de inventario
 - ✅ `/api/shipments/` - Recepciones de mercancía
 - ✅ `/api/orders/` - Pedidos de salida
+- ✅ `/api/dashboard/summary` - Métricas y Analytics ⭐ **NUEVO**
 
 ### 🔐 Usuarios Creados
 - **admin / admin123** (Administrador completo)
 - **user / user123** (Usuario básico)
 
 ### 🎯 Próximas Fases
-1. **FASE 5**: Crear dashboard con métricas y estadísticas
-2. **FASE 6-8**: Frontend - Dependencias, types, layout
-3. **FASE 9-11**: Frontend - Vistas CRUD y dashboard con gráficos
-4. **FASE 12-13**: Testing, refinamiento y documentación
+1. **FASE 6**: Frontend - Instalar recharts
+2. **FASE 7**: Frontend - Types y API Services
+3. **FASE 8**: Frontend - Layout y navegación
+4. **FASE 9-11**: Frontend - Vistas CRUD y dashboard con gráficos
+5. **FASE 12-13**: Testing, refinamiento y documentación
 
 ---
 
 **Fecha de Inicio**: 16/10/2025  
-**Última Actualización**: 16/10/2025 - 14:40
+**Última Actualización**: 16/10/2025 - 15:00
 

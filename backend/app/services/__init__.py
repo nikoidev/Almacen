@@ -10,6 +10,7 @@ from .location_service import LocationService
 from .inventory_service import InventoryService
 from .shipment_service import ShipmentService
 from .order_service import OrderService
+from .dashboard_service import DashboardService
 
 __all__ = [
     # Core services
@@ -23,6 +24,7 @@ __all__ = [
     "LocationService",
     "InventoryService",
     "ShipmentService",
-    "OrderService"
+    "OrderService",
+    "DashboardService"
 ]
 
