@@ -1,8 +1,11 @@
-# 🚀 Sistema de Gestión de Usuarios - Base Universal
+# 🏭 SGA Pro - Sistema de Gestión de Almacenes
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-2.0.0-009688.svg?logo=fastapi)](https://fastapi.tiangolo.com)
+[![Backend CI](https://github.com/nikoidev/Almacen/workflows/Backend%20CI/badge.svg)](https://github.com/nikoidev/Almacen/actions)
+[![Frontend CI](https://github.com/nikoidev/Almacen/workflows/Frontend%20CI/badge.svg)](https://github.com/nikoidev/Almacen/actions)
+
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-009688.svg?logo=fastapi)](https://fastapi.tiangolo.com)
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.33-black.svg?logo=next.js)](https://nextjs.org)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-316192.svg?logo=postgresql)](https://www.postgresql.org)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-316192.svg?logo=postgresql)](https://www.postgresql.org)
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB.svg?logo=python)](https://www.python.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6.svg?logo=typescript)](https://www.typescriptlang.org)
 
