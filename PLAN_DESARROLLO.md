@@ -411,19 +411,29 @@ Permisos asignados:
 
 ---
 
-### ✅ **FASE 10: Frontend - Operaciones de Almacén** (COMPLETADA)
+### ✅ **FASE 10: Frontend - Operaciones de Almacén** (COMPLETADA 100%)
 
-- [x] Crear `frontend/app/shipments/page.tsx`
-  - Lista de recepciones con estados
-  - Vista de proveedores y fechas
-  - Badges de estado coloridos
-  - Nota: Funcionalidad completa pendiente
+- [x] Crear `frontend/app/(protected)/shipments/page.tsx`
+  - ✅ Lista de recepciones con estados y badges
+  - ✅ Modal crear recepción (proveedor, productos, ubicaciones, fecha)
+  - ✅ Modal ver detalle con todos los items
+  - ✅ Modal recibir mercancía (ingreso de cantidades recibidas)
+  - ✅ Integración completa con API (create, getAll, receive)
+  - ✅ Actualización automática de inventario al recibir
+  - ✅ Validaciones de formularios
+  - ✅ Toast notifications
   
-- [x] Crear `frontend/app/orders/page.tsx`
-  - Lista de pedidos con estados
-  - Vista de clientes y fechas
-  - Badges de estado coloridos
-  - Nota: Funcionalidad completa pendiente
+- [x] Crear `frontend/app/(protected)/orders/page.tsx`
+  - ✅ Lista de pedidos con estados y badges
+  - ✅ Modal crear pedido (cliente, productos con stock disponible)
+  - ✅ Modal ver detalle con items ordenados/pickeados
+  - ✅ Modal realizar picking (recolección de productos)
+  - ✅ Botón marcar como enviado
+  - ✅ Integración completa con API (create, getAll, pick, ship)
+  - ✅ Muestra stock disponible al crear pedido
+  - ✅ Actualización automática de inventario al pickear
+  - ✅ Reserva de stock al crear pedido
+  - ✅ Validaciones de formularios y stock
 
 ---
 
@@ -563,7 +573,7 @@ Registrar automáticamente:
 
 ## 🎯 Estado Actual
 
-**Fase Actual**: ✅ **FASE 0-11 COMPLETADAS (90%)** | 🚧 **FASE 12-13: Testing y Documentación** (Siguiente)
+**Fase Actual**: ✅ **FASE 0-11 COMPLETADAS (100%)** | 🎯 **FASE 12-13: Testing y Documentación** (Siguiente)
 
 ### ✅ Backend Completado (100%)
 - **14 tablas** en base de datos funcionando
@@ -592,18 +602,21 @@ Registrar automáticamente:
 1. **FASE 12**: Testing y refinamiento (pruebas en Swagger, validaciones) 🎯 **← Siguiente**
 2. **FASE 13**: Documentación final y guía de uso
 
-### 📦 Frontend - Completado (90%)
+### 📦 Frontend - Completado (100%) ✅
 - ✅ **Types**: 277 líneas de interfaces TypeScript
 - ✅ **API Services**: 7 módulos completos
 - ✅ **Layout**: Navegación organizada en 3 secciones con 11 enlaces
-- ✅ **Páginas CRUD**: Productos, Proveedores, Ubicaciones (completas)
-- ✅ **Inventario**: Gestión completa con ajustes y movimientos
-- ✅ **Dashboard**: 4 KPIs + 3 gráficos Recharts + alertas + utilización
-- ✅ **Shipments/Orders**: Vista básica (funcionalidad completa pendiente)
+- ✅ **Páginas CRUD**: Productos, Proveedores, Ubicaciones (100%)
+- ✅ **Inventario**: Gestión completa con ajustes y movimientos (100%)
+- ✅ **Dashboard**: 4 KPIs + 3 gráficos Recharts + alertas + utilización (100%)
+- ✅ **Shipments**: Crear, ver, recibir mercancía (100%) ⭐ **COMPLETADO**
+- ✅ **Orders**: Crear, ver, picking, enviar (100%) ⭐ **COMPLETADO**
 - ✅ **Dependencias**: recharts ^3.2.1, @types/recharts ^1.8.29
+- ✅ **Modo dark/light**: Funcionando correctamente
+- ✅ **VS Code Config**: F5 para ejecutar con build automático
 
 ---
 
 **Fecha de Inicio**: 16/10/2025  
-**Última Actualización**: 16/10/2025 - 16:30
+**Última Actualización**: 20/10/2025 - Completado Fase 10 (Shipments & Orders 100%)
 
