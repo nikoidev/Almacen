@@ -250,7 +250,7 @@ export interface InventoryByProduct {
     reserved_quantity: number
   }>
   total_quantity: number
-  total_reserved: number
+  reserved_quantity: number
   available_quantity: number
 }
 
@@ -304,7 +304,7 @@ export interface InboundShipmentCreate {
 
 export interface InboundShipmentReceive {
   items: Array<{
-    item_id: number
+    id: number
     quantity_received: number
   }>
 }
@@ -342,13 +342,12 @@ export interface OutboundOrderCreate {
   items: Array<{
     product_id: number
     quantity_ordered: number
-    location_id: number
   }>
 }
 
 export interface OutboundOrderPick {
   items: Array<{
-    item_id: number
+    id: number
     quantity_picked: number
   }>
 }
