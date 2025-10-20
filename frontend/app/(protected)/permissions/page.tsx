@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Layout from '@/components/Layout'
 import { permissionsApi } from '@/lib/api/permissions'
 import { Permission, PermissionCreate, PermissionUpdate } from '@/types'
 import toast from 'react-hot-toast'
@@ -95,8 +94,7 @@ export default function PermissionsPage() {
   }
 
   return (
-    <Layout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-medium text-gray-900 dark:text-white">
             Gestión de Permisos
@@ -306,6 +304,5 @@ export default function PermissionsPage() {
           </div>
         )}
       </div>
-    </Layout>
   )
 }

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Layout from '@/components/Layout'
 import Pagination from '@/components/Pagination'
 import PasswordStrength from '@/components/PasswordStrength'
 import { usersApi, GetUsersParams } from '@/lib/api/users'
@@ -168,8 +167,7 @@ export default function UsersPage() {
   }
 
   return (
-    <Layout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             Usuarios ({total})
@@ -420,10 +418,9 @@ export default function UsersPage() {
             </>
           )}
         </div>
-      </div>
 
-      {/* Modal */}
-      {showModal && (
+        {/* Modal */}
+        {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
@@ -561,7 +558,7 @@ export default function UsersPage() {
             </div>
           </div>
         </div>
-      )}
-    </Layout>
+        )}
+    </div>
   )
 }
