@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Layout from '@/components/Layout'
 import Pagination from '@/components/Pagination'
 import { auditLogsApi, GetAuditLogsParams } from '@/lib/api/audit-logs'
 import { AuditLog } from '@/types'
@@ -157,8 +156,7 @@ export default function AuditLogsPage() {
   const uniqueResources = Array.from(new Set(logs.map(log => log.resource)))
 
   return (
-    <Layout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             Registro de Actividad ({total})
@@ -437,7 +435,7 @@ export default function AuditLogsPage() {
           </div>
         </div>
       )}
-    </Layout>
+    </div>
   )
 }
 

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Layout from '@/components/Layout'
 import { profileApi } from '@/lib/api/profile'
 import { useAuth } from '@/contexts/AuthContext'
 import { ProfileUpdate } from '@/types'
@@ -120,8 +119,7 @@ export default function ProfilePage() {
   if (!user) return null
 
   return (
-    <Layout>
-      <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-6">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           Mi Perfil
         </h1>
@@ -386,7 +384,6 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-    </Layout>
   )
 }
 

@@ -168,11 +168,11 @@ export default function DashboardPage() {
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
-                  data={summary.stock_by_category}
+                  data={summary.stock_by_category as any}
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ category, percent }) => `${category} (${(percent * 100).toFixed(0)}%)`}
+                  label={({ category, percent }: any) => `${category} (${(percent * 100).toFixed(0)}%)`}
                   outerRadius={100}
                   fill="#8884d8"
                   dataKey="total_units"

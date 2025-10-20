@@ -154,7 +154,6 @@ export default function Layout({ children }: LayoutProps) {
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
             {allNavigationItems.find((item) => item.href === pathname)?.name || 'Dashboard'}
           </h2>
-          <ThemeToggle />
         </div>
 
         {/* Page content */}

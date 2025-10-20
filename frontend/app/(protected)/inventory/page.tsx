@@ -6,7 +6,7 @@ import { productsApi } from '@/lib/api/products'
 import { locationsApi } from '@/lib/api/locations'
 import { Inventory, Product, Location, InventoryAdjust, InventoryMove } from '@/types'
 import toast from 'react-hot-toast'
-import { ExclamationTriangleIcon, ArrowsRightLeftIcon, PlusMinusIcon } from '@heroicons/react/24/outline'
+import { ExclamationTriangleIcon, ArrowsRightLeftIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline'
 
 export default function InventoryPage() {
   const [inventory, setInventory] = useState<Inventory[]>([])
@@ -86,7 +86,7 @@ export default function InventoryPage() {
             onClick={() => setShowAdjustModal(true)}
             className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
           >
-            <PlusMinusIcon className="w-5 h-5 mr-2" />
+            <AdjustmentsHorizontalIcon className="w-5 h-5 mr-2" />
             Ajustar Stock
           </button>
           <button

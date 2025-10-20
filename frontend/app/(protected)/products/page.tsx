@@ -180,7 +180,7 @@ export default function ProductsPage() {
                   <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">{product.sku}</td>
                   <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{product.name}</td>
                   <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">{product.category || '-'}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">${product.price.toFixed(2)}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">${Number(product.price).toFixed(2)}</td>
                   <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">{product.min_stock_level}</td>
                   <td className="px-6 py-4 text-right text-sm space-x-2">
                     <button

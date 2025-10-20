@@ -12,8 +12,8 @@ export const dynamicParams = true
 export const revalidate = 0
 
 export const metadata: Metadata = {
-  title: 'User Management System',
-  description: 'Complete user, role, and permission management system',
+  title: 'SGA Pro - Sistema de Gestión de Almacenes',
+  description: 'Complete Warehouse Management System with Inventory Control, Inbound/Outbound Operations, RBAC and Analytics',
 }
 
 export default function RootLayout({
