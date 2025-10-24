@@ -150,6 +150,18 @@ export default function DashboardPage() {
                   borderRadius: '8px',
                   color: '#F9FAFB',
                 }}
+                formatter={(value: any, name: string, props: any) => {
+                  if (name === 'Stock Total') {
+                    return [value, name]
+                  }
+                  return [value, name]
+                }}
+                labelFormatter={(label: any, payload: any) => {
+                  if (payload && payload.length > 0 && payload[0].payload) {
+                    return payload[0].payload.name
+                  }
+                  return label
+                }}
               />
               <Bar dataKey="total_stock" fill="#3B82F6" name="Stock Total" />
             </BarChart>
