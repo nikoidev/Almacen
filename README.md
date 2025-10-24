@@ -9,7 +9,7 @@
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB.svg?logo=python)](https://www.python.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6.svg?logo=typescript)](https://www.typescriptlang.org)
 
-> **Base sólida y profesional para cualquier proyecto que necesite gestión de usuarios, roles y permisos.** Sistema completo y listo para producción que sirve como fundamento para proyectos de gestión empresarial, e-commerce, sistemas médicos, almacenes, producción y más.
+> **Sistema completo de gestión de almacenes con control de inventario en tiempo real.** Base sólida con gestión de usuarios, roles y permisos (RBAC) + módulos especializados para administración de productos, proveedores, ubicaciones, envíos de entrada/salida, y seguimiento completo de stock con audit log detallado.
 
 ---
 
@@ -35,13 +35,24 @@
 - ✅ **Permisos** - Control granular por recurso y acción
 - ✅ **Asignación Dinámica** - Cambios en vivo sin reiniciar
 
+### 📦 **Gestión de Almacén (SGA)**
+- ✅ **Productos** - CRUD completo con SKU único, categorías, precios, peso y dimensiones
+- ✅ **Proveedores** - Gestión de proveedores con contacto y detalles comerciales
+- ✅ **Ubicaciones** - Control de zonas, pasillos, estanterías y niveles con capacidad
+- ✅ **Inventario** - Seguimiento de stock en tiempo real por ubicación con stock mínimo
+- ✅ **Envíos de Entrada** - Recepción de mercancía con múltiples artículos y actualización automática de stock
+- ✅ **Órdenes de Salida** - Proceso completo de picking y despacho con validación de stock
+- ✅ **Dashboard Analytics** - Métricas clave, gráficos de tendencias, alertas de stock bajo
+- ✅ **Transacciones Atómicas** - Rollback automático en caso de error
+- ✅ **Validaciones de Negocio** - Prevención de stock negativo, validación de capacidad
+
 ### 📊 **Funcionalidades Avanzadas**
 - ✅ **Paginación Inteligente** - 10/25/50/100 items por página
 - ✅ **Búsqueda en Tiempo Real** - Con debounce (500ms)
-- ✅ **Filtros Múltiples** - Por rol, estado, recurso, acción
+- ✅ **Filtros Múltiples** - Por categoría, proveedor, ubicación, estado de envío/orden
 - ✅ **Ordenamiento** - Por cualquier columna (ascendente/descendente)
-- ✅ **Audit Log** - Registro completo de actividades con IP y user agent
-- ✅ **Historial de Actividad** - Ver últimas acciones de cualquier usuario
+- ✅ **Audit Log Completo** - Registro de todas las operaciones de inventario con IP y user agent
+- ✅ **Historial de Actividad** - Ver últimas acciones de cualquier usuario con detalles completos
 
 ### 🎨 **Interfaz Moderna**
 - ✅ **Tema Oscuro/Claro** - Toggle persistente
@@ -55,25 +66,32 @@
 ## 🏗️ Arquitectura del Sistema
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                         Frontend                             │
-│  Next.js 14 + TypeScript + Tailwind CSS + React Hooks       │
-│  - Páginas: Dashboard, Users, Roles, Permissions, Profile   │
-│  - Componentes reutilizables + Context API                  │
-└──────────────────────┬──────────────────────────────────────┘
-                       │ HTTP/REST API
-┌──────────────────────┴──────────────────────────────────────┐
-│                         Backend                              │
-│          FastAPI + SQLAlchemy + Pydantic + JWT              │
-│  - Autenticación JWT + Refresh Tokens                       │
-│  - RBAC + Audit Log + Rate Limiting                         │
-└──────────────────────┬──────────────────────────────────────┘
-                       │
-┌──────────────────────┴──────────────────────────────────────┐
-│                       PostgreSQL 16                          │
-│      Tables: users, roles, permissions, audit_logs          │
-│         Relaciones: user_roles, role_permissions            │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│                            Frontend                                   │
+│     Next.js 14 + TypeScript + Tailwind CSS + Recharts                │
+│  - Módulos: Dashboard, Inventario, Productos, Proveedores,           │
+│    Ubicaciones, Envíos, Órdenes, Usuarios, Roles, Permisos,          │
+│    Profile, Audit Logs                                                │
+│  - Componentes reutilizables + Context API (Auth, Theme)             │
+└────────────────────────────┬─────────────────────────────────────────┘
+                             │ HTTP/REST API (JWT Bearer Token)
+┌────────────────────────────┴─────────────────────────────────────────┐
+│                            Backend                                    │
+│            FastAPI + SQLAlchemy + Pydantic + JWT                     │
+│  - Autenticación JWT + Refresh Tokens                                │
+│  - RBAC (Control de Acceso Basado en Roles)                          │
+│  - Servicios: Productos, Proveedores, Ubicaciones, Inventario,       │
+│    Envíos, Órdenes, Dashboard, Usuarios, Roles, Audit Log            │
+│  - Transacciones atómicas + Validaciones de negocio                  │
+└────────────────────────────┬─────────────────────────────────────────┘
+                             │
+┌────────────────────────────┴─────────────────────────────────────────┐
+│                         PostgreSQL 15                                 │
+│  Tables: users, roles, permissions, user_roles, role_permissions,    │
+│          products, suppliers, locations, inventory,                   │
+│          inbound_shipments, inbound_shipment_items,                   │
+│          outbound_orders, outbound_order_items, audit_logs            │
+└──────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -171,39 +189,48 @@ Usuario Regular:
 ## 📚 Estructura del Proyecto
 
 ```
-user-management-system/
+almacen/
 ├── backend/                  # API FastAPI
 │   ├── app/
 │   │   ├── api/             # Endpoints REST
-│   │   │   ├── routes/      # auth, users, roles, permissions, audit_logs, profile
+│   │   │   ├── routes/      # auth, users, roles, permissions, profile, audit_logs
+│   │   │   │                # products, suppliers, locations, inventory
+│   │   │   │                # shipments, orders, dashboard
 │   │   │   └── deps.py      # Dependencias (auth, db)
 │   │   ├── core/            # Configuración central
 │   │   │   ├── config.py    # Variables de entorno
 │   │   │   ├── security.py  # JWT, hashing
 │   │   │   ├── database.py  # SQLAlchemy engine
 │   │   │   └── encryption.py # Fernet encryption
-│   │   ├── models/          # Modelos SQLAlchemy
-│   │   ├── schemas/         # Schemas Pydantic
-│   │   ├── services/        # Lógica de negocio
+│   │   ├── models/          # Modelos SQLAlchemy (14 models)
+│   │   ├── schemas/         # Schemas Pydantic (validación)
+│   │   ├── services/        # Lógica de negocio (9 services)
 │   │   ├── utils/           # Utilidades (audit)
 │   │   └── templates/       # Templates HTML para emails
 │   ├── uploads/             # Archivos subidos (avatars)
 │   ├── Pipfile              # Dependencias Python
 │   ├── init_db.py           # Script de inicialización
-│   ├── migrate_to_v2.py     # Script de migración
+│   ├── test_api.py          # Script de testing
 │   └── run.py               # Entry point
 │
 ├── frontend/                # App Next.js
 │   ├── app/                 # App Router
-│   │   ├── dashboard/       # Panel principal
-│   │   ├── users/           # Gestión de usuarios
-│   │   ├── roles/           # Gestión de roles
-│   │   ├── permissions/     # Gestión de permisos
-│   │   ├── profile/         # Perfil profesional
-│   │   ├── audit-logs/      # Registro de actividad
+│   │   ├── (protected)/     # Rutas protegidas con Layout
+│   │   │   ├── dashboard/       # Dashboard con métricas y gráficos
+│   │   │   ├── inventory/       # Vista de inventario
+│   │   │   ├── products/        # CRUD productos
+│   │   │   ├── suppliers/       # CRUD proveedores
+│   │   │   ├── locations/       # CRUD ubicaciones
+│   │   │   ├── shipments/       # Envíos de entrada
+│   │   │   ├── orders/          # Órdenes de salida
+│   │   │   ├── users/           # Gestión de usuarios
+│   │   │   ├── roles/           # Gestión de roles
+│   │   │   ├── permissions/     # Gestión de permisos
+│   │   │   ├── profile/         # Perfil profesional
+│   │   │   └── audit-logs/      # Registro de actividad
 │   │   └── login/           # Página de inicio de sesión
 │   ├── components/          # Componentes reutilizables
-│   │   ├── Layout.tsx       # Layout principal
+│   │   ├── Layout.tsx       # Layout principal con sidebar
 │   │   ├── Pagination.tsx   # Componente de paginación
 │   │   └── PasswordStrength.tsx # Validador de contraseña
 │   ├── contexts/            # React Contexts
@@ -212,10 +239,18 @@ user-management-system/
 │   ├── hooks/               # Custom Hooks
 │   │   └── useDebounce.ts   # Hook de debounce
 │   ├── lib/                 # Utilidades
-│   │   ├── api/             # Servicios API
-│   │   └── axios.ts         # Cliente HTTP
+│   │   ├── api/             # Servicios API (9 services)
+│   │   └── axios.ts         # Cliente HTTP con interceptors
 │   ├── types/               # TypeScript types
 │   └── package.json
+│
+├── .github/workflows/       # CI/CD con GitHub Actions
+│   ├── backend-ci.yml       # Linting, tests, security
+│   └── frontend-ci.yml      # Linting, type check, build
+│
+├── .vscode/                 # Configuración VS Code
+│   ├── launch.json          # Debug configs (F5)
+│   └── tasks.json           # Tareas automatizadas
 │
 └── docker-compose.yml       # PostgreSQL + pgAdmin
 ```
@@ -311,6 +346,77 @@ No requiere variables de entorno. La URL del backend está configurada en `lib/a
 | GET | `/api/audit-logs/` | Listar logs (paginado) | Sí |
 | GET | `/api/audit-logs/recent` | Logs recientes | Sí |
 | GET | `/api/audit-logs/my-activity` | Mi actividad | Sí |
+
+### Productos
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/products/` | Listar productos (paginado, búsqueda, filtros) | Sí |
+| GET | `/api/products/{id}` | Obtener producto | Sí |
+| GET | `/api/products/categories` | Listar categorías únicas | Sí |
+| POST | `/api/products/` | Crear producto | Sí |
+| PUT | `/api/products/{id}` | Actualizar producto | Sí |
+| DELETE | `/api/products/{id}` | Eliminar producto | Sí |
+
+### Proveedores
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/suppliers/` | Listar proveedores (paginado) | Sí |
+| GET | `/api/suppliers/{id}` | Obtener proveedor | Sí |
+| POST | `/api/suppliers/` | Crear proveedor | Sí |
+| PUT | `/api/suppliers/{id}` | Actualizar proveedor | Sí |
+| DELETE | `/api/suppliers/{id}` | Eliminar proveedor | Sí |
+
+### Ubicaciones
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/locations/` | Listar ubicaciones (paginado) | Sí |
+| GET | `/api/locations/{id}` | Obtener ubicación | Sí |
+| GET | `/api/locations/{id}/available-capacity` | Obtener capacidad disponible | Sí |
+| POST | `/api/locations/` | Crear ubicación | Sí |
+| PUT | `/api/locations/{id}` | Actualizar ubicación | Sí |
+| DELETE | `/api/locations/{id}` | Eliminar ubicación | Sí |
+
+### Inventario
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/inventory/` | Listar todo el inventario (paginado) | Sí |
+| GET | `/api/inventory/product/{product_id}` | Stock de un producto por ubicación | Sí |
+| GET | `/api/inventory/low-stock` | Productos con stock bajo | Sí |
+| POST | `/api/inventory/adjust` | Ajustar stock (manual) | Sí |
+| POST | `/api/inventory/move` | Mover stock entre ubicaciones | Sí |
+
+### Envíos de Entrada
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/shipments/` | Listar envíos (paginado, filtros) | Sí |
+| GET | `/api/shipments/{id}` | Obtener envío con items | Sí |
+| POST | `/api/shipments/` | Crear envío de entrada | Sí |
+| POST | `/api/shipments/{id}/receive` | Recibir mercancía (actualiza stock) | Sí |
+| PUT | `/api/shipments/{id}` | Actualizar envío | Sí |
+| DELETE | `/api/shipments/{id}` | Eliminar envío | Sí |
+
+### Órdenes de Salida
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/orders/` | Listar órdenes (paginado, filtros) | Sí |
+| GET | `/api/orders/{id}` | Obtener orden con items | Sí |
+| POST | `/api/orders/` | Crear orden (reserva stock) | Sí |
+| POST | `/api/orders/{id}/pick` | Marcar items como preparados | Sí |
+| POST | `/api/orders/{id}/ship` | Enviar orden (reduce stock) | Sí |
+| PUT | `/api/orders/{id}` | Actualizar orden | Sí |
+| DELETE | `/api/orders/{id}` | Eliminar orden | Sí |
+
+### Dashboard
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/dashboard/summary` | Resumen de métricas y gráficos | Sí |
 
 📖 **Documentación Completa**: http://localhost:8000/docs
 
