@@ -228,7 +228,7 @@ export interface Inventory {
 export interface InventoryAdjust {
   product_id: number
   location_id: number
-  quantity_change: number
+  quantity: number
   reason: string
 }
 
