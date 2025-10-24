@@ -19,7 +19,7 @@ export default function InventoryPage() {
   const [adjustData, setAdjustData] = useState<InventoryAdjust>({
     product_id: 0,
     location_id: 0,
-    quantity_change: 0,
+    quantity: 0,
     reason: '',
   })
   const [moveData, setMoveData] = useState<InventoryMove>({
@@ -198,14 +198,19 @@ export default function InventoryPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Cambio de Cantidad * (positivo o negativo)</label>
+                <label className="block text-sm font-medium mb-1">Cantidad Final *</label>
                 <input
                   type="number"
                   required
-                  value={adjustData.quantity_change}
-                  onChange={(e) => setAdjustData({ ...adjustData, quantity_change: parseInt(e.target.value) })}
+                  min="0"
+                  value={adjustData.quantity}
+                  onChange={(e) => setAdjustData({ ...adjustData, quantity: parseInt(e.target.value) })}
                   className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  placeholder="Ingrese la cantidad final deseada"
                 />
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  Esta será la cantidad total en esta ubicación
+                </p>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">Razón *</label>
